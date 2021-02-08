@@ -1,0 +1,29 @@
+.view-class {
+  width: 300px;
+  min-width: 300px;
+  height: 500px;
+  min-height: 500px;
+  border: 1px solid black;
+}
+
+.btn-class {
+  width: 300px;
+  min-width: 300px;
+  height: 20px;
+  min-height: 20px;
+  background-color: red;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.div-class {
+  width: 300px;
+  min-width: 300px;
+  height: 20px;
+  min-height: 20px;
+  background-color: rgb(39, 50, 197);
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
