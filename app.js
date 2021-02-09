@@ -14,13 +14,21 @@ app.use((req, res, next) => {
 })
 
 app.get('/first', (req, res) => {
-  const firstPage = pug.renderFile('./pages/first_page.pug');
+  const data = { page: 'first' };
+  const firstPage = pug.renderFile('./pages/template.pug', data);
   res.status(200).send(firstPage).end();
 })
 
 app.get('/second', (req, res) => {
-  const secondPage = pug.renderFile('./pages/second_page.pug');
+  const data = { page: 'second' };
+  const secondPage = pug.renderFile('./pages/template.pug', data);
   res.status(200).send(secondPage).end();
+})
+
+app.get('/third', (req, res) => {
+  const data = { page: 'third' };
+  const thirdPage = pug.renderFile('./pages/template.pug', data);
+  res.status(200).send(thirdPage).end();
 })
 
 

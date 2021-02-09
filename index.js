@@ -18,22 +18,22 @@ const container = document.querySelector('#id');
 // });
 
 window.onload = function () {
-  f('first').then(({ data }) => {
+  getInfo('first').then(({ data }) => {
     container.innerHTML = data;
-    const btn = document.querySelector('.btn-class');
-    btn.addEventListener('click', (e) => {
-      const cn = (e.target.className);
-      console.log(cn);
-      const page = cn.includes('second') ? 'first' : 'second';
-      f(page).then(({ data }) => {
-        container.innerHTML = data;
-      });
-    });
-    // const toSecondPage = document.querySelector('.first-page');
-    // const toFirstPage = document.querySelector('.second-page');
   });
 
+  container.addEventListener('click', (e) => {
+    const classes = ['btn-class first-page', 'btn-class second-page'];
+    if (!classes.includes(e.target.className)) {
+      return;
+    }
+    const pageName = e.target.className.split(' ')[1];
+    const page = getDestination(pageName);
+    getInfo(page).then(({ data }) => {
+      container.innerHTML = data;
+    });
 
+  })
 
 }
 
