@@ -6,8 +6,8 @@ window.onload = function () {
     const form = document.querySelector('form');
     form.addEventListener('submit', (e) => {
       const name = e.target.elements[0].value;
-      const surname = e.target.elements[1].value;
-      login({ name, surname }).then(({ status, token }) => {
+      const password = e.target.elements[1].value;
+      login({ name, password }).then(({ status, token }) => {
         if (status === 200) {
           getToTest(token).then(({ data }) => {
             container.innerHTML = data;

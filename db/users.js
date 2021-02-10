@@ -1,7 +1,7 @@
 const users = [
   {
     name: 'ivan',
-    surname: 'ivan',
+    password: '$2b$07$2/eqU2kLeFxSpl5/FvPvGea38mgko8BKx5gmDxVPRHhNJBKu3HyJW',
     username: "student1",
     nickname: "ivan ivan",
     template: "default",

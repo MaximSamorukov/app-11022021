@@ -28,8 +28,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  const { name, surname } = req.body;
-  const user = getUser({ name, surname })[0];
+  const { name, password } = req.body;
+  const user = getUser({ name, password })[0];
   if (!user) {
     res.status(404).send('You are not!!!').end();
   } else {

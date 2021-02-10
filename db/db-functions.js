@@ -1,8 +1,10 @@
 const users = require('./users');
+const bcrypt = require('bcrypt');
 
-function getUser({ name, surname }) {
+function getUser({ name, password }) {
   const user = users.filter((i) => {
-    return i.name === name && i.surname === surname;
+    const passwordValidation = bcrypt.compareSync(password, i.password);
+    return i.name === name && passwordValidation;
   });
   return user;
 }

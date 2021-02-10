@@ -1,5 +1,6 @@
 const constants = {
   secret: 'secret',
+  salt: 7,
 };
 
 

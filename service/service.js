@@ -20,11 +20,11 @@ function getDestination(classname) {
   return obj[classname];
 }
 
-function login({ name, surname }, page = '') {
-  console.log(name, surname);
+function login({ name, password }, page = '') {
+  console.log(name, password);
   return axios.post(`http://localhost:5000/${page}`, {
     name,
-    surname
+    password
   })
     .then((response, reject) => {
       const { status, data: token } = response
