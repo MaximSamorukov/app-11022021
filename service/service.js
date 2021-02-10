@@ -21,7 +21,7 @@ function getDestination(classname) {
 }
 
 function login({ name, password }, page = '') {
-  console.log(name, password);
+  // console.log(name, password);
   return axios.post(`http://localhost:5000/${page}`, {
     name,
     password

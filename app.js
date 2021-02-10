@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const users = require('./db/users');
 const getUser = require('./db/db-functions');
 const constants = require('./service/constants');
-
+// const getProctorJWTToken = require('./service/serverFunctions')
 const app = express();
 const port = 5000;
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
   res.status(200).send(loginPage).end();
 })
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
   const { name, password } = req.body;
   const user = getUser({ name, password })[0];
   if (!user) {
@@ -41,12 +41,12 @@ app.post('/', (req, res) => {
 })
 app.use((req, res, next) => {
   const { token } = req.body;
-  console.log(token);
+  // console.log(token);
   if (!token) {
     res.end();
   } else {
     const decoded = jwt.verify(token, constants.secret);
-    console.log(decoded);
+    // console.log(decoded);
     next()
   }
   // console.log(decoded);
@@ -58,7 +58,8 @@ app.post('/first', (req, res) => {
 })
 
 app.post('/second', (req, res) => {
-  const data = { page: 'second' };
+  const { token } = req.body;
+  const data = { page: 'second', token };
   const secondPage = pug.renderFile('./pages/template.pug', data);
   res.status(200).send(secondPage).end();
 })
