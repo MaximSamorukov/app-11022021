@@ -1,11 +1,11 @@
 function getInfo(page = '', url = 'http://localhost', port = '80') {
-  return axios.get(`${url}:${port}/${page}`).then((response) => {
+  return axios.get(`${url}${page}`).then((response) => {
     return response;
   })
 }
 
 function getToTest(token = '', url = 'http://localhost', port = '80', page = 'first') {
-  return axios.post(`${url}:${port}/${page}`, {
+  return axios.post(`${url}${page}`, {
     token,
   }).then((response) => {
     return response;
@@ -22,7 +22,7 @@ function getDestination(classname) {
 
 function login({ name, password }, url = 'http://localhost', port = '80', page = '') {
   // console.log(name, password);
-  return axios.post(`${url}:${port}/${page}`, {
+  return axios.post(`${url}${page}`, {
     name,
     password
   })
