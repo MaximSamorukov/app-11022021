@@ -7,7 +7,7 @@ const getUser = require('./db/db-functions');
 const constants = require('./service/constants');
 // const getProctorJWTToken = require('./service/serverFunctions')
 const app = express();
-const port = 5000;
+const port = '8080';
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use((req, res, next) => {
   res.set({

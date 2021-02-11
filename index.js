@@ -1,15 +1,18 @@
+const url = 'http://localhost';
+const page = '';
+const port = '8080';
 const container = document.querySelector('#id');
 
 window.onload = function () {
-  getInfo().then(({ data }) => {
+  getInfo(page, url, port).then(({ data }) => {
     container.innerHTML = data;
     const form = document.querySelector('form');
     form.addEventListener('submit', (e) => {
       const name = e.target.elements[0].value;
       const password = e.target.elements[1].value;
-      login({ name, password }).then(({ status, token }) => {
+      login({ name, password }, url, port).then(({ status, token }) => {
         if (status === 200) {
-          getToTest(token).then(({ data }) => {
+          getToTest(token, url, port).then(({ data }) => {
             container.innerHTML = data;
           })
         }
@@ -26,8 +29,20 @@ window.onload = function () {
     const page = getDestination(pageName);
     const st = window.localStorage;
     const token = st.getItem('token');
-    getToTest(token, page).then(({ data }) => {
+    getToTest(token, url, port, page).then(({ data }) => {
       container.innerHTML = data;
+      if (page === 'second') {
+        const supervisor = new Supervisor({ url: 'https://demo.proctoring.online' });
+        supervisor.init({
+          provider: 'jwt',
+          token,
+        }).then(function () {
+          return supervisor.start();
+        }).catch(function (err) {
+          alert(err.toString());
+          location.href = '/';
+        });
+      }
     });
 
   })
