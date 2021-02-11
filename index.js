@@ -1,6 +1,7 @@
-const url = 'http://localhost';
+// const url = 'http://localhost';
+const url = 'https://salty-lowlands-75174.herokuapp.com/';
 const page = '';
-const port = '8080';
+const port = '80';
 const container = document.querySelector('#id');
 
 window.onload = function () {
