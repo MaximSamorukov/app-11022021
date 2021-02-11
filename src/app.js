@@ -1,5 +1,4 @@
 const express = require('express');
-
 const bodyParser = require("body-parser");
 const pug = require('pug');
 const jwt = require('jsonwebtoken');
